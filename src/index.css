@@ -1,0 +1,11 @@
+/* Minimal CSS reset and background for modern look */
+body {
+  margin: 0;
+  padding: 0;
+  background: #f7f8fa;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
