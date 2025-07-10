@@ -36,5 +36,7 @@ npm run dev
 - React (Vite)
 - Material-UI (MUI)
 - Axios
+## Screenshots
+<img width="1112" alt="Screenshot 2025-07-10 at 12 40 00 PM" src="https://github.com/user-attachments/assets/093e747d-7ef3-4822-bf3c-7effb3e74928" />
 
 
