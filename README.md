@@ -1,12 +1,40 @@
-# React + Vite
+# Task Management Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React app for managing tasks with real-time feedback and AI-powered features.
 
-Currently, two official plugins are available:
+## Features
+- Task buckets: Upcoming, Completed, Missed
+- Add, edit, complete, and delete tasks
+- Priority badges and tag chips
+- AI-powered: Generate tasks from natural language
+- Instant feedback and smooth transitions
+- Mobile-friendly (MUI)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Quick Start
 
-## Expanding the ESLint configuration
+```bash
+git clone https://github.com/rishiqwerty/task-management-frontend.git
+cd task-management-frontend
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- App runs at: http://localhost:5173
+- Make sure the backend is running (see backend README)
+
+## Configuration
+- Update the API base URL in `src/App.jsx` if your backend is not on `localhost:9000`
+- For CORS, add your frontend URL to the backend `.env` (`CORS_ALLOWED_ORIGINS`)
+
+## Usage
+- Use the "Add Task" button to create tasks
+- Use the text box at the top to generate tasks from a project description
+- Click edit or delete icons on each task for quick actions
+- Tasks are auto-sorted by due date and priority
+
+## Tech Stack
+- React (Vite)
+- Material-UI (MUI)
+- Axios
+
+
