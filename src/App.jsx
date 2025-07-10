@@ -6,8 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const API_BASE = 'http://localhost:9000';
-
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const TASK_TABS = [
   { label: 'Upcoming', value: 'upcoming' },
@@ -75,7 +74,7 @@ function App() {
   }, [tab]);
 
   useEffect(() => {
-    // Poll every 5 seconds
+    // Poll every 30 seconds
     const interval = setInterval(() => {
       fetchTasks();
     }, 30000);
@@ -95,7 +94,7 @@ function App() {
     setLoading(true);
     try {
       const res = await axios.get(`${API_BASE}/tasks/tasks/`);
-      const tasks = res.data;
+      const tasks = Array.isArray(res.data) ? res.data : [];
       setTasks(tasks);
     } catch (err) {
       setSnackbar({ open: true, message: 'Failed to load tasks.' });
