@@ -8,7 +8,8 @@ A modern, responsive React app for managing tasks with real-time feedback and AI
 - Priority badges and tag chips
 - AI-powered: Generate tasks from natural language
 - Instant feedback and smooth transitions
-- Mobile-friendly (MUI)
+- Mobile-friendly
+- Auto refresh every minute
 
 ## Quick Start
 
@@ -20,10 +21,11 @@ npm run dev
 ```
 
 - App runs at: http://localhost:5173
-- Make sure the backend is running (see backend README)
+- Make sure the backend is running [see backend README](https://github.com/rishiqwerty/task-management?tab=readme-ov-file#task-management-platform)
 
 ## Configuration
-- Update the API base URL in `src/App.jsx` if your backend is not on `localhost:9000`
+- Update the API base URL in `.env` at `VITE_API_BASE`
+- Add refresh time in `.env` at `VITE_REFERSH_TIME` default is 30000(30 seconds)
 - For CORS, add your frontend URL to the backend `.env` (`CORS_ALLOWED_ORIGINS`)
 
 ## Usage
