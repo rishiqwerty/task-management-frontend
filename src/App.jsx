@@ -7,6 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const API_BASE = import.meta.env.VITE_API_BASE;
+const REFRESH_TIME = parseInt(import.meta.env.VITE_REFERSH_TIME) || 30000; // Default to 30 seconds if not set
+console.log('API_BASE:', API_BASE);
 
 const TASK_TABS = [
   { label: 'Upcoming', value: 'upcoming' },
@@ -77,7 +79,7 @@ function App() {
     // Poll every 30 seconds
     const interval = setInterval(() => {
       fetchTasks();
-    }, 30000);
+    }, REFRESH_TIME);
     return () => clearInterval(interval);
   }, []);
 
