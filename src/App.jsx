@@ -70,18 +70,25 @@ function App() {
   const [textInput, setTextInput] = useState('');
   const [textLoading, setTextLoading] = useState(false);
   const [expandedDescriptions, setExpandedDescriptions] = useState(new Set());
-
+  const [timeLeft, setTimeLeft] = useState(Math.floor(REFRESH_TIME / 1000));
   useEffect(() => {
     fetchTasks();
-  }, [tab]);
+  }, []);
+  useEffect(() => {
+    setTimeLeft(Math.floor(REFRESH_TIME / 1000)); // Reset timer on tab change or refresh
+    const interval = setInterval(() => {
+      setTimeLeft(prev => prev > 1 ? prev - 1 : Math.floor(REFRESH_TIME / 1000));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [tab, REFRESH_TIME]);
 
   useEffect(() => {
-    // Poll every 30 seconds
-    const interval = setInterval(() => {
+    const refreshInterval = setInterval(() => {
       fetchTasks();
+      setTimeLeft(Math.floor(REFRESH_TIME / 1000)); // Reset timer on refresh
     }, REFRESH_TIME);
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(refreshInterval);
+  }, [tab, REFRESH_TIME]);
 
   useEffect(() => {
     const now = new Date(); // Always use current time
@@ -283,6 +290,11 @@ function App() {
           Add Task
         </Button>
       </Box>
+      <Box display="flex" justifyContent="flex-end" alignItems="center" sx={{ mb: 1 }}>
+      <Typography variant="caption" color="text.secondary">
+        Refreshing in {timeLeft}s
+      </Typography>
+    </Box>
       <Box sx={{ mb: 3, p: 2, border: '1px solid #e0e0e0', borderRadius: 2, backgroundColor: '#f9f9f9' }}>
         <Typography variant="h6" gutterBottom>
           Create Tasks from Text
